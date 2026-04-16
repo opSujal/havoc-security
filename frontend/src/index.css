@@ -358,7 +358,7 @@ small,
 
 .top-icon:hover {
   color: var(--text-100);
-  transform: scale(1.1);
+  transition: all 0.2s ease;
 }
 
 .avatar {
@@ -370,6 +370,15 @@ small,
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Sidebar Nav content */
+.sidebar-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -1100,6 +1109,13 @@ small,
     background: rgba(10, 15, 25, 0.85); /* Slightly less transparent for tab bar */
     box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
   }
+
+  .sidebar-nav {
+    flex-direction: row !important;
+    width: 100%;
+    justify-content: space-around;
+    gap: 0 !important;
+  }
   
   .main-area {
     order: 1;
@@ -1151,5 +1167,43 @@ small,
   /* Make tables scroll horizontally rather than crunching */
   .bottom-panel {
     overflow-x: auto;
+  }
+
+  /* Fix Radar Chart transform on mobile */
+  .db-radar-container {
+    transform: none !important;
+    margin-top: 60px !important;
+    height: 250px !important;
+  }
+
+  /* Fix Vulnerabilities Page on mobile */
+  .vuln-page {
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .vuln-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 16px;
+    padding: 16px !important;
+  }
+
+  .vuln-filters {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .vuln-search-input {
+    width: 100% !important;
+  }
+
+  .vuln-search-wrap {
+    width: 100%;
+  }
+
+  .vuln-export-strip {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

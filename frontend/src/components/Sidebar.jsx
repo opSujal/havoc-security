@@ -41,7 +41,7 @@ export default function Sidebar({ onLogout }) {
       />
 
       {/* Nav icons */}
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div className="sidebar-nav">
         {NAV_ITEMS.map((item) => {
           const isActive = location.pathname.includes(item.id);
           return (
