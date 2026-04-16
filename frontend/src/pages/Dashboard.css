@@ -160,3 +160,69 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+/* ── Dashboard Mobile Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .db-middle-row {
+    height: auto !important;
+  }
+
+  .db-radar-container {
+    transform: none !important;
+    margin-top: 60px !important;
+    height: 280px !important;
+  }
+
+  .db-panel,
+  .db-panel-relative {
+    min-height: 300px;
+  }
+
+  .db-epss-chart {
+    height: 220px;
+    flex: none;
+  }
+
+  .db-epss-subtitle {
+    margin-top: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .db-page {
+    gap: 16px;
+    padding-right: 0;
+  }
+
+  .db-panel-title-group {
+    font-size: 20px;
+  }
+
+  .db-epss-title,
+  .db-issues-title {
+    font-size: 20px;
+  }
+
+  .db-radar-container {
+    height: 240px !important;
+  }
+
+  .db-epss-chart {
+    height: 200px;
+  }
+
+  /* Make target table scroll horizontally instead of squishing */
+  .db-targets-panel {
+    overflow-x: auto;
+  }
+
+  .db-targets-panel .data-table {
+    min-width: 480px;
+  }
+
+  .db-targets-panel .data-table th,
+  .db-targets-panel .data-table td {
+    white-space: nowrap;
+  }
+}

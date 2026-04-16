@@ -963,6 +963,11 @@ small,
   100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); opacity: 0.6; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
 .fadein {
   /* The main container fades in and scales slightly */
   animation: pageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1094,20 +1099,26 @@ small,
   }
   
   .sidebar {
+    /* Fixed to viewport bottom — scroll never moves it */
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     height: 64px;
     flex-direction: row;
     justify-content: space-around;
-    padding: 0 16px;
+    padding: 0 20px;
     margin: 0;
-    border-radius: 20px;
-    order: 3; /* Move to bottom */
-    position: sticky;
-    bottom: 12px;
-    z-index: 50;
+    border-radius: 0;           /* flush with screen edge */
+    border-top: 1px solid rgba(255,255,255,0.07);
+    z-index: 1000;
     backdrop-filter: blur(50px);
-    background: rgba(10, 15, 25, 0.85); /* Slightly less transparent for tab bar */
-    box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+    -webkit-backdrop-filter: blur(50px);
+    background: rgba(8, 12, 22, 0.92);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.6);
+    /* iOS safe area */
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .sidebar-nav {
@@ -1118,9 +1129,10 @@ small,
   }
   
   .main-area {
-    order: 1;
     overflow-y: visible;
     height: auto;
+    /* Ensure content is never hidden behind the fixed bottom nav */
+    padding-bottom: 90px;
   }
   
   .middle-row, .bottom-row {
@@ -1134,16 +1146,103 @@ small,
   
   .topbar {
     padding: 0;
+    /* Logo + right pill only — fill the gap left by the hidden search bar */
+    justify-content: space-between;
   }
   
   .search-wrapper {
-    display: none; /* Hide search bar on mobile */
+    display: none !important; /* inline style override: must use !important */
+  }
+
+  /* Mobile scan bar — shown only on phones */
+  .mobile-scan-bar {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    margin-bottom: 4px;
+  }
+
+  .mobile-scan-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Aeonik', sans-serif;
+    font-size: 14px;
+  }
+
+  .mobile-scan-bar input::placeholder {
+    color: rgba(255,255,255,0.35);
+  }
+
+  .mobile-scan-bar button {
+    background: #ff3c5a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 16px;
+    font-family: 'Aeonik', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .mobile-scan-bar button:hover {
+    background: #e0304d;
+  }
+
+  /* Fix notification + filter dropdowns overflowing phone viewport */
+  .topbar-dropdown-notif,
+  .topbar-dropdown-filter {
+    width: min(360px, 94vw) !important;
+    right: 0 !important;
+    left: auto !important;
   }
 }
 
 @media (max-width: 600px) {
+  /* Fix massive table headers overflowing and wrapping on phones */
+  .data-table thead tr th {
+    font-size: 10px;
+    letter-spacing: 0;
+    white-space: nowrap !important;
+    padding: 12px 8px 10px 8px; /* slim down mobile th padding */
+  }
+
   .metrics-row {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .metric-card {
+    padding: 12px 10px;
+  }
+  
+  .metric-header {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+  
+  .metric-value {
+    font-size: 32px;
+    margin-top: 4px;
+  }
+  
+  .metric-from-label {
+    font-size: 9px;
+  }
+  
+  .metric-trend {
+    font-size: 9px;
+    padding: 3px 5px;
   }
   
   .launch-modules-section {

@@ -101,6 +101,10 @@ export default function App() {
   });
   const updateModules = (newModules) => setModules(newModules);
 
+  // Mobile filter sheet state
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [mobileLocalModules, setMobileLocalModules] = useState(modules);
+
   // Poll scan status while scanning
   const idleGrace = useRef(0);
   const poll = useCallback(async () => {
@@ -204,6 +208,194 @@ export default function App() {
             toggleModule={updateModules}
             user={user}
           />
+          {/* ─── Mobile-only scan bar (hidden on desktop via CSS) ─── */}
+          <div className="mobile-scan-bar" style={{ display: 'none', flexDirection: 'column', gap: 0, padding: 0, background: 'transparent', border: 'none', backdropFilter: 'none' }}>
+            {/* Input row */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 8,
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 16, padding: '10px 12px',
+              backdropFilter: 'blur(20px)',
+            }}>
+              <input
+                type="url"
+                placeholder={scanning ? 'Scan in progress…' : 'Paste URL / domain to scan'}
+                value={targetUrl || ''}
+                onChange={e => setTargetUrl(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && targetUrl?.trim() && handleStartScan(targetUrl, { mode: 'custom', modules })}
+                disabled={scanning}
+                style={{
+                  flex: 1, background: 'transparent', border: 'none', outline: 'none',
+                  color: 'rgba(255,255,255,0.85)', fontFamily: "'Aeonik', sans-serif", fontSize: 14,
+                }}
+              />
+              {/* Filter button */}
+              <button
+                onClick={() => { setMobileLocalModules(modules); setMobileFilterOpen(true); }}
+                style={{
+                  position: 'relative', background: mobileFilterOpen ? 'rgba(255,60,90,0.18)' : 'rgba(255,255,255,0.07)',
+                  border: '1px solid rgba(255,255,255,0.12)', borderRadius: 10,
+                  padding: '6px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
+                  color: 'rgba(255,255,255,0.7)', fontSize: 13, fontFamily: "'Aeonik', sans-serif",
+                  transition: 'all 0.2s',
+                }}
+              >
+                ⚙️
+                {/* Active module count badge */}
+                {Object.values(modules).filter(Boolean).length > 0 && (
+                  <span style={{
+                    background: '#ff3c5a', color: '#fff', fontSize: 9, fontWeight: 700,
+                    minWidth: 15, height: 15, borderRadius: 8, display: 'flex',
+                    alignItems: 'center', justifyContent: 'center', padding: '0 3px',
+                  }}>
+                    {Object.values(modules).filter(Boolean).length}
+                  </span>
+                )}
+              </button>
+              {/* Scan / Stop button */}
+              {scanning ? (
+                <button
+                  onClick={handleCancelScan}
+                  style={{
+                    background: '#555', color: '#fff', border: 'none', borderRadius: 10,
+                    padding: '7px 14px', fontFamily: "'Aeonik', sans-serif", fontSize: 13,
+                    fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap',
+                  }}
+                >Stop</button>
+              ) : (
+                <button
+                  onClick={() => targetUrl?.trim() && handleStartScan(targetUrl, { mode: 'custom', modules })}
+                  disabled={!targetUrl?.trim()}
+                  style={{
+                    background: targetUrl?.trim() ? '#ff3c5a' : 'rgba(255,60,90,0.25)',
+                    color: '#fff', border: 'none', borderRadius: 10,
+                    padding: '7px 14px', fontFamily: "'Aeonik', sans-serif", fontSize: 13,
+                    fontWeight: 600, cursor: targetUrl?.trim() ? 'pointer' : 'not-allowed',
+                    whiteSpace: 'nowrap', transition: 'background 0.2s',
+                  }}
+                >Scan</button>
+              )}
+            </div>
+          </div>
+
+          {/* ─── Mobile Filter Bottom Sheet ─── */}
+          {mobileFilterOpen && (
+            <>
+              {/* Backdrop */}
+              <div
+                onClick={() => setMobileFilterOpen(false)}
+                style={{
+                  position: 'fixed', inset: 0, zIndex: 1998,
+                  background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)',
+                }}
+              />
+              {/* Sheet */}
+              <div style={{
+                position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1999,
+                background: 'rgba(10,12,20,0.97)',
+                borderTop: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '24px 24px 0 0',
+                padding: '20px 20px 32px',
+                boxShadow: '0 -16px 48px rgba(0,0,0,0.7)',
+                animation: 'slideUpSheet 0.25s cubic-bezier(0.16,1,0.3,1)',
+              }}>
+                {/* Handle + header */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+                  <div>
+                    <div style={{ width: 36, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.15)', margin: '0 auto 14px' }} />
+                    <span style={{
+                      fontFamily: "'Aeonik', sans-serif", fontSize: 11, fontWeight: 600,
+                      letterSpacing: 1.5, textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)',
+                    }}>Scan Modules</span>
+                  </div>
+                  <button
+                    onClick={() => setMobileFilterOpen(false)}
+                    style={{
+                      background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '50%', width: 30, height: 30, color: 'rgba(255,255,255,0.5)',
+                      cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                  >×</button>
+                </div>
+
+                {/* Module toggles */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 20, maxHeight: '40vh', overflowY: 'auto' }}>
+                  {[
+                    { key: 'portScan',     label: 'Port Scan (Recon)' },
+                    { key: 'webVuln',      label: 'Web Vuln Scan (OWASP)' },
+                    { key: 'manualChecks', label: 'Manual Checks (Headers/SSL)' },
+                    { key: 'deepChecks',   label: 'Deep Checks (SQLi/XSS)', premium: true },
+                    { key: 'secretKey',    label: 'Secret Key Scanning', premium: true },
+                    { key: 'advFuzzing',   label: 'Adv. Fuzzing (SSTI/CORS)', premium: true },
+                    { key: 'dataLeakage', label: 'Data Leakage & PII Scan', premium: true },
+                    { key: 'dangerMode',   label: 'Danger Mode (Aggressive)', premium: true },
+                    { key: 'agenticAi',    label: "Agentic AI Risks (OWASP '26)" },
+                    { key: 'owaspTop10',   label: 'OWASP Top 10 (2025)' },
+                  ].map(({ key, label, premium }) => {
+                    const on = mobileLocalModules?.[key];
+                    return (
+                      <div
+                        key={key}
+                        onClick={() => setMobileLocalModules(prev => ({ ...prev, [key]: !prev[key] }))}
+                        style={{
+                          display: 'flex', alignItems: 'center', gap: 12,
+                          padding: '12px 14px', borderRadius: 12, cursor: 'pointer',
+                          background: on
+                            ? (key === 'dangerMode' ? 'rgba(255,60,90,0.1)' : 'rgba(255,255,255,0.04)')
+                            : 'transparent',
+                          border: `1px solid ${on ? (key === 'dangerMode' ? 'rgba(255,60,90,0.25)' : 'rgba(255,255,255,0.08)') : 'transparent'}`,
+                          transition: 'all 0.15s',
+                        }}
+                      >
+                        {/* Mini toggle */}
+                        <div style={{
+                          width: 36, height: 20, borderRadius: 10, position: 'relative',
+                          background: on ? (key === 'dangerMode' ? '#ff3c5a' : '#ff3c5a') : 'rgba(255,255,255,0.1)',
+                          border: `1px solid ${on ? '#ff3c5a' : 'rgba(255,255,255,0.15)'}`,
+                          flexShrink: 0, transition: 'all 0.2s',
+                        }}>
+                          <div style={{
+                            position: 'absolute', top: 3, left: on ? 17 : 3,
+                            width: 12, height: 12, borderRadius: '50%', background: '#fff',
+                            transition: 'left 0.2s',
+                          }} />
+                        </div>
+                        <span style={{
+                          flex: 1,
+                          fontFamily: "'Aeonik', sans-serif",
+                          fontSize: 14,
+                          fontWeight: key === 'dangerMode' ? 700 : 400,
+                          color: on
+                            ? (key === 'dangerMode' ? '#ff6b6b' : 'rgba(255,255,255,0.9)')
+                            : 'rgba(255,255,255,0.45)',
+                        }}>
+                          {label}
+                          {premium && <span style={{ color: '#fbbf24', marginLeft: 6, fontSize: 11 }}>★</span>}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Apply button */}
+                <button
+                  onClick={() => {
+                    updateModules(mobileLocalModules);
+                    setMobileFilterOpen(false);
+                  }}
+                  style={{
+                    width: '100%', background: '#ff3c5a', color: '#fff',
+                    border: 'none', borderRadius: 14, padding: '14px 0',
+                    fontFamily: "'Aeonik', sans-serif", fontSize: 15, fontWeight: 600,
+                    cursor: 'pointer', letterSpacing: 0.3,
+                  }}
+                >
+                  Apply Modules ({Object.values(mobileLocalModules).filter(Boolean).length} active)
+                </button>
+              </div>
+            </>
+          )}
           <Routes>
             <Route path="/dashboard" element={<Dashboard onStartScan={handleStartScan} scanning={scanning} scanVersion={scanVersion} onNavigate={(path) => navigate(`/${path}`)} targetUrl={targetUrl} modules={modules} />} />
             <Route path="/cyber-intelligence" element={<CyberIntelligence />} />

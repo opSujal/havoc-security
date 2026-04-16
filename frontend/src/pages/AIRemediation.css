@@ -382,3 +382,60 @@
   text-decoration: none;
   word-break: break-all;
 }
+
+/* ── AI Remediation Mobile Responsive ───────────────────────────────────── */
+@media (max-width: 900px) {
+  .ai-page {
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+
+  /* Stack meta-panel on top of patch viewer */
+  .ai-content {
+    flex-direction: column;
+    gap: 16px;
+    min-height: unset;
+  }
+
+  .ai-meta-panel {
+    width: 100%;
+    flex-shrink: unset;
+  }
+
+  .ai-patch-viewer {
+    overflow-y: visible;
+    min-height: 300px;
+  }
+
+  .ai-header {
+    padding: 14px 16px !important;
+    gap: 10px;
+  }
+
+  .ai-header-badge {
+    display: none; /* hide badge on small screens to reduce clutter */
+  }
+}
+
+@media (max-width: 600px) {
+  .ai-page-title {
+    font-size: 18px;
+  }
+
+  /* Make the 2-col patch cards single column */
+  .ai-patch-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-empty-state {
+    min-height: 220px;
+  }
+
+  .ai-patch-viewer {
+    padding: 16px;
+  }
+
+  .ai-meta-panel {
+    padding: 16px;
+  }
+}

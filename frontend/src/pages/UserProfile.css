@@ -628,3 +628,65 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.65);
 }
+
+/* ── UserProfile Mobile Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Hero: stack avatar + info vertically */
+  .profile-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 20px;
+  }
+
+  .profile-hero-stats {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 16px;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .profile-hero-stat {
+    padding: 0 10px;
+  }
+
+  /* Collapse 2-column grids to 1 */
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-platform-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Scan history: horizontal scroll instead of squish */
+  .profile-history-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .profile-history-header,
+  .profile-history-row {
+    min-width: 560px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-full-name {
+    font-size: 26px;
+  }
+
+  .profile-hero {
+    padding: 20px 16px;
+  }
+
+  .profile-card {
+    padding: 16px;
+  }
+
+  .profile-hero-stat-value {
+    font-size: 20px;
+  }
+}

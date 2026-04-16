@@ -302,14 +302,14 @@ export default function Dashboard({ _onStartScan, _scanning = false, scanVersion
         </div>
 
         <div className="bottom-panel liquid-glass-strong db-targets-panel">
-          <div className="hide-scrollbar" style={{ flex: 1, overflowY: 'auto', position: 'relative' }}>
-            <table className="data-table" style={{ width: '100%' }}>
+          <div className="hide-scrollbar" style={{ width: '100%', display: 'block', overflowX: 'auto', overflowY: 'hidden', WebkitOverflowScrolling: 'touch' }}>
+            <table className="data-table" style={{ width: '100%', tableLayout: 'auto' }}>
               <thead>
                 <tr>
-                  <th style={{ paddingLeft: 24 }}>Target Links</th>
-                  <th>Scan Status</th>
-                  <th style={{ textAlign: 'center' }}>Vulnerabilities found</th>
-                  <th style={{ textAlign: 'center' }}></th>
+                  <th style={{ paddingLeft: 24, whiteSpace: 'nowrap' }}>Target Links</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>Status</th>
+                  <th style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>Issues</th>
+                  <th style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -328,24 +328,24 @@ export default function Dashboard({ _onStartScan, _scanning = false, scanVersion
                   return (
                     <tr key={idx}>
                       <td className="td-link" style={{ paddingLeft: 24, fontFamily: 'Aeonik', fontWeight: 400 }}>
-                        {(t.target || '').length > 30 ? (t.target || '').slice(0, 30) + '…' : (t.target || '')}
+                        {(t.target || '').length > 22 ? (t.target || '').slice(0, 22) + '…' : (t.target || '')}
                       </td>
                       <td className="td-status" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>
                         <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: statusColor }}>
                           {StatusIcon} {t.status}
                         </span>
                       </td>
-                      <td className="td-score">
+                      <td className="td-score" style={{ textAlign: 'center' }}>
                         <span style={{ fontFamily: 'Aeonik', fontWeight: 500, color: t.vulns > 0 ? 'var(--red)' : 'var(--text-50)' }}>
                           {t.vulns}
                         </span>
                       </td>
-                      <td className="td-action" style={{ fontFamily: 'Aeonik', fontWeight: 400 }}>
+                      <td className="td-action" style={{ fontFamily: 'Aeonik', fontWeight: 400, textAlign: 'center' }}>
                         <span
                           onClick={() => onNavigate && onNavigate('vulnerabilities')}
-                          style={{ cursor: 'pointer' }}
+                          style={{ cursor: 'pointer', color: 'rgba(255,255,255,0.6)' }}
                         >
-                          Details
+                          View
                         </span>
                       </td>
                     </tr>

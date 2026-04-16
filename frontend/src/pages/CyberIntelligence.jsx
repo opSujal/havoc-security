@@ -8,11 +8,11 @@ import './CyberIntelligence.css';
 
 // ── Security Posture Ring (SVG segmented ring) ────────────────────────────────
 function SecurityPostureRing({ score = 0, maxScore = 100 }) {
-  const size = 200;
+  const size = 150;   /* was 200 — scaled 25% */
   const cx = size / 2;
   const cy = size / 2;
-  const radius = 78;
-  const strokeW = 10;
+  const radius = 58;  /* was 78 */
+  const strokeW = 8;  /* was 10 */
   const circumference = 2 * Math.PI * radius;
   const pct = Math.min(score / maxScore, 1);
   const offset = circumference * (1 - pct);
@@ -88,15 +88,15 @@ function SecurityPostureRing({ score = 0, maxScore = 100 }) {
           stroke="rgba(255,255,255,0.03)" strokeWidth={1} />
 
         {/* Center score */}
-        <text x={cx} y={cy - 6} textAnchor="middle" dominantBaseline="central"
-          fontSize={42} fontWeight={700} fill={color}
+        <text x={cx} y={cy - 5} textAnchor="middle" dominantBaseline="central"
+          fontSize={32} fontWeight={700} fill={color}
           fontFamily="'SF Mono', 'Menlo', 'Monaco', monospace"
-          style={{ filter: `drop-shadow(0 0 12px ${color}55)` }}
+          style={{ filter: `drop-shadow(0 0 10px ${color}55)` }}
         >
           {score}
         </text>
-        <text x={cx} y={cy + 24} textAnchor="middle" dominantBaseline="central"
-          fontSize={11} fill="rgba(255,255,255,0.45)"
+        <text x={cx} y={cy + 18} textAnchor="middle" dominantBaseline="central"
+          fontSize={9} fill="rgba(255,255,255,0.45)"
           fontFamily="Aeonik, Inter, sans-serif" letterSpacing="2"
           textTransform="uppercase"
         >
@@ -437,7 +437,7 @@ export default function CyberIntelligence() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
             {/* Donut chart */}
             <div style={{ position: 'relative', width: '100%', maxWidth: 260, marginTop: 10 }}>
-              <ResponsiveContainer width="100%" height={220}>
+              <ResponsiveContainer width="100%" height={165}>
                 <PieChart>
                   <defs>
                     {attackData.map((d, i) => (
@@ -450,9 +450,9 @@ export default function CyberIntelligence() {
                   <Pie
                     data={attackData.map(d => ({ ...d, value: Math.max(d.value, 0.01) }))}
                     cx="50%" cy="50%"
-                    innerRadius={70} outerRadius={95}
+                    innerRadius={52} outerRadius={71}
                     paddingAngle={4}
-                    cornerRadius={8}
+                    cornerRadius={6}
                     dataKey="value"
                     strokeWidth={0}
                   >

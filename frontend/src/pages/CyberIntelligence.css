@@ -102,18 +102,18 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  height: 420px; /* Fixed height so all boxes match */
+  height: 315px; /* 420px × 0.75 — 25% height reduction */
 }
 
 .ci-panel-compact {
-  height: 420px; /* Fixed height so all boxes match */
+  height: 315px; /* 420px × 0.75 — 25% height reduction */
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
 .ci-panel-padded {
-  height: 420px; /* Fixed height so all boxes match */
+  height: 315px; /* 420px × 0.75 — 25% height reduction */
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -160,8 +160,8 @@
 /* ── Chart containers ── */
 .ci-chart-area {
   flex: 1;
-  min-height: 180px;
-  margin-top: 16px;
+  min-height: 135px; /* scaled from 180px — 25% reduction */
+  margin-top: 12px;
   position: relative;
   z-index: 2;
 }
@@ -171,7 +171,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 8px;
   position: relative;
   z-index: 2;
 }
@@ -524,10 +524,10 @@
     grid-column: span 1;
   }
 
-  /* Release the fixed 420px height on mobile so content expands safely vertically */
+  /* Release the fixed height on mobile so content expands safely vertically */
   .ci-panel, .ci-panel-compact, .ci-panel-padded {
     height: auto !important;
-    min-height: 380px; 
+    min-height: 285px;
     padding: 20px;
   }
   
