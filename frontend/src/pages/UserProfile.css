@@ -1,0 +1,630 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   PROFILE PAGE — Typography: Aeonik Medium (500) for headings, Regular (400) for body
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Layout ── */
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 32px;
+  min-height: 100%;
+}
+
+/* ── Back Button ── */
+.profile-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.profile-back-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  transform: translateX(-2px);
+}
+
+/* ── Hero Card ── */
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 58px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-hero::after {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 60, 90, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Avatar */
+.profile-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-avatar-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: block;
+}
+
+.profile-avatar-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 60, 90, 0.45);
+  pointer-events: none;
+}
+
+.profile-avatar-edit-btn {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 32px;
+  height: 32px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 60, 90, 0.5);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.profile-avatar-edit-btn:hover {
+  background: #ff3c5a;
+  transform: scale(1.1);
+  border-color: #ff3c5a;
+  color: #fff;
+}
+
+/* Hero info */
+.profile-hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.profile-full-name {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 36px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.55) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.profile-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.profile-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 60, 90, 0.12);
+  border: 1px solid rgba(255, 60, 90, 0.28);
+  color: #f87171;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.profile-id-chip {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.profile-email-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+/* Hero quick stats */
+.profile-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding-left: 28px;
+  flex-shrink: 0;
+}
+
+.profile-hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profile-hero-stat:last-child {
+  border-right: none;
+}
+
+.profile-hero-stat-value {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 26px;
+  line-height: 1;
+}
+
+.profile-hero-stat-label {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+/* ── Grid ── */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.profile-card-wide {
+  grid-column: 1 / -1;
+}
+
+/* ── Card ── */
+.profile-card {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Section Header ── */
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 12px;
+}
+
+/* ── Fields ── */
+.profile-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-field-label {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.profile-field-value {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  display: block;
+}
+
+.profile-field-value-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+}
+
+.profile-field-value-row .profile-field-value {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+
+/* ── Eye Button ── */
+.profile-eye-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.profile-eye-btn:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Change Password Button ── */
+.profile-change-pwd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 12px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.profile-change-pwd-btn:hover,
+.profile-change-pwd-btn.open {
+  background: rgba(255, 60, 90, 0.09);
+  border-color: rgba(255, 60, 90, 0.28);
+  color: #f87171;
+}
+
+/* ── Password Form ── */
+.profile-pwd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  animation: profileFadeIn 0.2s ease;
+}
+
+@keyframes profileFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-pwd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-pwd-label {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.4px;
+}
+
+.profile-pwd-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+  transition: border-color 0.2s;
+}
+
+.profile-pwd-input-wrap:focus-within {
+  border-color: rgba(255, 60, 90, 0.45);
+}
+
+.profile-pwd-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 13px;
+}
+
+.profile-pwd-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.profile-save-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(255, 60, 90, 0.14);
+  border: 1px solid rgba(255, 60, 90, 0.35);
+  color: #f87171;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.profile-save-btn:hover:not(:disabled) {
+  background: rgba(255, 60, 90, 0.24);
+  border-color: rgba(255, 60, 90, 0.55);
+}
+
+.profile-save-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Vulnerability Bar ── */
+.profile-vuln-bar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.profile-vuln-bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.profile-vuln-bar-track {
+  display: flex;
+  height: 7px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  gap: 1px;
+}
+
+.profile-vuln-segment {
+  height: 100%;
+  transition: width 0.5s ease;
+  min-width: 4px;
+}
+
+.seg-critical {
+  background: #ff3c5a;
+}
+
+.seg-high {
+  background: #ff8c42;
+}
+
+.seg-medium {
+  background: #f0c040;
+}
+
+.seg-low {
+  background: #4ade80;
+}
+
+.profile-vuln-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Session Note ── */
+.profile-session-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(240, 192, 64, 0.06);
+  border: 1px solid rgba(240, 192, 64, 0.15);
+  border-radius: 10px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+/* ── Scan History Table ── */
+.profile-history-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.profile-history-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.6fr 0.8fr 1.2fr;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-history-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.6fr 0.8fr 1.2fr;
+  gap: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  transition: background 0.15s;
+  align-items: center;
+}
+
+.profile-history-row:last-child {
+  border-bottom: none;
+}
+
+.profile-history-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.profile-history-target {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+}
+
+/* ── Platform Section ── */
+.profile-platform-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profile-platform-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  background: rgba(10, 10, 10, 0.5);
+  transition: background 0.15s;
+}
+
+.profile-platform-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.profile-platform-label {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  /* Aeonik Regular */
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-platform-value {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  /* Aeonik Medium */
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}

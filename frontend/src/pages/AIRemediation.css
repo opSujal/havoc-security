@@ -1,0 +1,384 @@
+/* ── AI Remediation Page Styles ──────────────────────────────────────────── */
+
+/* Page container */
+.ai-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100vh - 130px);
+  overflow-y: auto;
+}
+
+/* ── Header ── */
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.ai-header-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.ai-header-icon img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.9;
+}
+
+.ai-page-title {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.ai-page-subtitle {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-50);
+  margin-top: 2px;
+}
+
+.ai-header-badge {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ai-header-badge span {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(248, 113, 113, 0.7);
+}
+
+/* ── Body ── */
+.ai-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Dropdown ── */
+.ai-dropdown-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 50;
+}
+
+.ai-dropdown-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 20;
+  backdrop-filter: blur(24px);
+}
+
+.ai-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ai-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ai-dropdown-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ai-dropdown-item-cve {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.ai-dropdown-item-sub {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-50);
+}
+
+/* ── Main content layout ── */
+.ai-content {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  min-height: 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Left metadata panel */
+.ai-meta-panel {
+  width: 270px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.ai-panel-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(6px);
+}
+
+.ai-panel-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.ai-meta-cve-title {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.ai-meta-cve-type {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-50);
+}
+
+.ai-meta-cve-header {
+  margin-bottom: 20px;
+}
+
+/* MetaField component */
+.ai-meta-field {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ai-meta-label {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--text-40);
+  margin-bottom: 5px;
+}
+
+.ai-meta-value {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Right patch viewer */
+.ai-patch-viewer {
+  flex: 1;
+  border-radius: 20px;
+  padding: 24px 28px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.ai-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ai-section-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.ai-section-title {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.22) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Empty state for patch viewer */
+.ai-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 380px;
+}
+
+.ai-empty-text {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-40);
+  text-align: center;
+}
+
+/* Raw solution text fallback */
+.ai-raw-solution {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-80);
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+
+/* Spinner dots */
+.ai-spinner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 0;
+}
+
+.ai-spinner-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.ai-spinner-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.7;
+}
+
+.ai-spinner-text {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--text-50);
+}
+
+/* PatchPanel cards */
+.ai-patch-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ai-summary-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.ai-impact-card {
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.ai-card-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.ai-card-label-text {
+  font-family: 'Aeonik', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.ai-card-body {
+  font-family: 'Aeonik', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Lang tabs */
+.ai-lang-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* References */
+.ai-refs {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.ai-refs-label {
+  font-family: 'Aeonik', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-30);
+  margin-bottom: 8px;
+}
+
+.ai-refs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ai-ref-link {
+  font-family: 'Aeonik', sans-serif;
+  font-size: 12px;
+  color: rgba(99, 179, 237, 0.8);
+  text-decoration: none;
+  word-break: break-all;
+}

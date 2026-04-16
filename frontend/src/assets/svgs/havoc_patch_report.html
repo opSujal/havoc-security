@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Havoc Security Patch Report — 2026-03-27 17:13:26</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',Arial,sans-serif;background:#050d13;color:#e2eaf3;padding:48px 56px;}
+    .report-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;border-bottom:1px solid rgba(0,200,255,0.2);padding-bottom:24px;}
+    .report-title{font-size:2rem;font-weight:800;color:#ff3c5a;letter-spacing:-0.5px;}
+    .report-sub{font-size:0.85rem;color:#6c8ba4;margin-top:6px;}
+    .report-meta{text-align:right;font-size:0.8rem;color:#6c8ba4;font-family:'JetBrains Mono',monospace;line-height:1.8;}
+    .exec-summary{background:rgba(255,60,90,0.04);border:1px solid rgba(255,60,90,0.12);border-radius:12px;padding:24px;margin-bottom:36px;}
+    .exec-summary h2{color:#ff3c5a;font-size:1rem;font-weight:700;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;}
+    .stat-box{background:rgba(255,255,255,0.03);border-radius:8px;padding:16px;text-align:center;}
+    .stat-num{font-size:2rem;font-weight:800;line-height:1;}
+    .stat-label{font-size:0.72rem;color:#6c8ba4;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;}
+    .n-critical{color:#ff3c5a;} .n-high{color:#ff8c42;} .n-medium{color:#f0c040;} .n-low{color:#00e5a0;}
+    .sev-table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+    .sev-table th{color:#6c8ba4;font-weight:600;padding:8px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .sev-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .sc{font-weight:700;font-size:0.78rem;padding:3px 10px;border-radius:20px;display:inline-block;}
+    .section-title{font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6c8ba4;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:8px;}
+    .vuln{border-left:4px solid;border-radius:10px;padding:24px;margin-bottom:24px;page-break-inside:avoid;}
+    .vuln-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+    .num{font-size:0.75rem;color:#6c8ba4;font-family:'JetBrains Mono',monospace;}
+    .vtype{font-weight:700;font-size:1rem;color:#e2eaf3;flex:1;}
+    .badge{font-size:0.7rem;font-weight:700;padding:3px 12px;border-radius:20px;}
+    .epss{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#6c8ba4;}
+    .vstatus{font-size:0.72rem;padding:2px 8px;border-radius:20px;}
+    .meta-table{width:100%;border-collapse:collapse;font-size:0.78rem;margin-bottom:16px;}
+    .meta-table td:first-child{color:#6c8ba4;width:100px;padding:3px 0;}
+    .meta-table td:last-child{color:#9ab0c4;}
+    code{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#ff3c5a;}
+    .section-label{font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6c8ba4;margin-bottom:8px;margin-top:16px;}
+    .desc{color:#9ab0c4;font-size:0.85rem;line-height:1.6;margin-bottom:4px;}
+    pre{font-family:'JetBrains Mono',monospace;font-size:0.75rem;white-space:pre-wrap;word-break:break-all;border-radius:8px;padding:14px;line-height:1.6;}
+    .location-box{background:rgba(255,60,90,0.05);border:1px solid rgba(255,60,90,0.15);color:#e2eaf3;}
+    .solution-box{background:rgba(0,229,160,0.04);border:1px solid rgba(0,229,160,0.15);color:#9ab0c4;}
+    @media print{body{padding:20px;}.vuln{page-break-inside:avoid;}}
+  </style>
+</head>
+<body>
+  <div class="report-header">
+    <div>
+      <div class="report-title">🛡️ Havoc Security Patch Report</div>
+      <div class="report-sub">Vulnerability Assessment &amp; Penetration Test — Actionable Remediation Guide</div>
+    </div>
+    <div class="report-meta">Generated: 2026-03-27 17:13:26<br>Total Findings: 9<br>Targets: https://weebcentral.com</div>
+  </div>
+  <div class="exec-summary">
+    <h2>Executive Summary</h2>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-num n-critical">0</div><div class="stat-label">Critical</div></div>
+      <div class="stat-box"><div class="stat-num n-high">0</div><div class="stat-label">High</div></div>
+      <div class="stat-box"><div class="stat-num n-medium">0</div><div class="stat-label">Medium</div></div>
+      <div class="stat-box"><div class="stat-num n-low">0</div><div class="stat-label">Low</div></div>
+    </div>
+    <table class="sev-table">
+      <tr><th>Severity</th><th>Count</th></tr>
+      <tr><td><span class="sc" style="background:rgba(255,60,90,.15);color:#ff3c5a;">Critical</span></td><td style="text-align:center;font-weight:700;">0</td></tr><tr><td><span class="sc" style="background:rgba(255,140,66,.15);color:#ff8c42;">High</span></td><td style="text-align:center;font-weight:700;">0</td></tr><tr><td><span class="sc" style="background:rgba(240,192,64,.15);color:#f0c040;">Medium</span></td><td style="text-align:center;font-weight:700;">0</td></tr><tr><td><span class="sc" style="background:rgba(0,229,160,.15);color:#00e5a0;">Low</span></td><td style="text-align:center;font-weight:700;">0</td></tr><tr><td>Open</td><td style="text-align:center;color:#ff3c5a;font-weight:700;">9</td></tr><tr><td>Remediated</td><td style="text-align:center;color:#00e5a0;font-weight:700;">0</td></tr>
+    </table>
+  </div>
+  <div class="section-title">Detailed Findings &amp; Patch Instructions</div>
+  
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#1</span>
+      <span class="vtype">Certificate Information</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.100</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>INFO-CERT-001</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.100</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Displays server's default picks and certificate info: ((('commonName', 'weebcentral.com'),),)</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**Remediation Strategy:**
+1. **Valid CA:** Ensure the certificate is issued by a trusted Certificate Authority.
+2. **Renewal:** Renew certificates before they expire.
+3. **Chain of Trust:** Ensure the full certificate chain (intermediate CAs) is served by the server.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#2</span>
+      <span class="vtype">Certificate Trust Chain</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.100</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>INFO-TRUST-001</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.100</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Tests certificate validity and trust chain</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**Remediation Strategy:**
+1. **Valid CA:** Ensure the certificate is issued by a trusted Certificate Authority.
+2. **Renewal:** Renew certificates before they expire.
+3. **Chain of Trust:** Ensure the full certificate chain (intermediate CAs) is served by the server.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#3</span>
+      <span class="vtype">Supported Cipher Suites</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.100</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>INFO-CIPHER-001</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.100</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Tests supported cipher suites by strength</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**General Remediation Advice:**
+1. **Patch Management:** Ensure the affected software component is updated to the latest secure version.
+2. **Configuration Review:** Review the configuration of the affected service against security best practices.
+3. **Defense in Depth:** Implement multiple layers of security controls (WAF, monitoring, least privilege) to mitigate the risk.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#4</span>
+      <span class="vtype">Security Check: Heartbleed</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.000</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>CVE-2014-0160</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.000</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Check for Heartbleed vulnerability. Status: Safe</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**Remediation Strategy:**
+1. **Patch OpenSSL:** Upgrade OpenSSL to version 1.0.1g or later immediately.
+2. **Rekey Certificates:** Revoke and reissue all SSL certificates as private keys may have been compromised.
+3. **Reset Credentials:** Force a password reset for all users and invalidate session tokens.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#5</span>
+      <span class="vtype">Security Check: Ticketbleed</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.000</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>CVE-2016-9244</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.000</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Check for Ticketbleed vulnerability. Status: Safe</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**General Remediation Advice:**
+1. **Patch Management:** Ensure the affected software component is updated to the latest secure version.
+2. **Configuration Review:** Review the configuration of the affected service against security best practices.
+3. **Defense in Depth:** Implement multiple layers of security controls (WAF, monitoring, least privilege) to mitigate the risk.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#6</span>
+      <span class="vtype">Security Check: CRIME</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.000</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>CVE-2012-4929</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.000</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Check for CRIME TLS compression. Status: Safe</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**Remediation Strategy:**
+1. **Disable Weak Ciphers:** Disable SSLv2, SSLv3, and TLS 1.0/1.1.
+2. **Strong Configuration:** Use only strong cipher suites (e.g., AES-GCM, ChaCha20).
+3. **Certificate Management:** Ensure certificates are valid, signed by a trusted CA, and not expired.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#7</span>
+      <span class="vtype">Security Check: POODLE</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.000</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>CVE-2014-3566</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.000</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Check for TLS_FALLBACK_SCSV mitigation. Status: Safe</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**Remediation Strategy:**
+1. **Disable Weak Ciphers:** Disable SSLv2, SSLv3, and TLS 1.0/1.1.
+2. **Strong Configuration:** Use only strong cipher suites (e.g., AES-GCM, ChaCha20).
+3. **Certificate Management:** Ensure certificates are valid, signed by a trusted CA, and not expired.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#8</span>
+      <span class="vtype">Security Check: LUCKY13</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.000</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>CVE-2013-0169</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.000</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Check for LUCKY13 vulnerability. Status: Safe</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**General Remediation Advice:**
+1. **Patch Management:** Ensure the affected software component is updated to the latest secure version.
+2. **Configuration Review:** Review the configuration of the affected service against security best practices.
+3. **Defense in Depth:** Implement multiple layers of security controls (WAF, monitoring, least privilege) to mitigate the risk.</pre>
+  </div>
+  <div class="vuln" style="border-left-color:#2ab4e0;background:rgba(42,180,224,0.06);">
+    <div class="vuln-header">
+      <span class="num">#9</span>
+      <span class="vtype">Security Check: DROWN</span>
+      <span class="badge" style="background:rgba(42,180,224,.15);color:#2ab4e0;">Info</span>
+      <span class="epss">EPSS: 0.000</span>
+      <span class="vstatus" style="background:rgba(42,180,224,.15);color:#ff3c5a;">Open</span>
+    </div>
+    <table class="meta-table">
+      <tr><td>CVE</td><td><code>CVE-2016-0800</code></td></tr>
+      <tr><td>Target</td><td><code>https://weebcentral.com</code></td></tr>
+      <tr><td>Severity</td><td style="color:#2ab4e0;font-weight:700;">Info</td></tr>
+      <tr><td>EPSS Score</td><td><code>0.000</code></td></tr>
+    </table>
+    <div class="section-label">📋 Description</div>
+    <p class="desc">Check for DROWN vulnerability. Status: Safe</p>
+    <div class="section-label">📍 Affected URL</div>
+    <pre class="location-box">/</pre>
+    <div class="section-label">🤖 AI Remediation</div>
+    <pre class="solution-box">**General Remediation Advice:**
+1. **Patch Management:** Ensure the affected software component is updated to the latest secure version.
+2. **Configuration Review:** Review the configuration of the affected service against security best practices.
+3. **Defense in Depth:** Implement multiple layers of security controls (WAF, monitoring, least privilege) to mitigate the risk.</pre>
+  </div>
+</body>
+</html>

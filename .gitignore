@@ -1,0 +1,18 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Database
+*.db
+*.sqlite3
+
+# Node/React
+node_modules/
+frontend/dist/
+.DS_Store
+
+# Temporary files
+error_log.txt
+not need/

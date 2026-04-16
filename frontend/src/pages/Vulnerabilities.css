@@ -1,0 +1,282 @@
+/* ── Vulnerabilities Page Styles ─────────────────────────────────────────── */
+
+/* Page container */
+.vuln-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100vh - 130px);
+  overflow-y: auto;
+}
+
+/* ── Header bar ── */
+.vuln-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.vuln-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vuln-icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, 0.12);
+  flex-shrink: 0;
+}
+
+.vuln-icon-circle img {
+  width: 28px;
+  height: 28px;
+  margin-top: 5px;
+}
+
+.vuln-page-title {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.vuln-page-subtitle {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-50);
+  margin-top: 2px;
+}
+
+/* ── Filters row ── */
+.vuln-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vuln-filter-btn {
+  padding: 5px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  transition: all 0.2s;
+}
+
+.vuln-search-wrap {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 20px;
+  gap: 8px;
+}
+
+.vuln-search-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-100);
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  width: 160px;
+}
+
+/* ── Table card ── */
+.vuln-table-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+
+.vuln-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(6px);
+}
+
+.vuln-scroll {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Empty state */
+.vuln-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  padding: 48px;
+}
+
+.vuln-empty-text {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-50);
+  text-align: center;
+}
+
+/* ── Table ── */
+.vuln-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.vuln-th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 14px 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.03);
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.vuln-th:first-child { border-top-left-radius: 20px; }
+.vuln-th:last-child  { border-top-right-radius: 20px; }
+
+.vuln-th-text {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.45) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.vuln-tr {
+  transition: background 0.15s;
+}
+
+.vuln-tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.vuln-td {
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Aeonik', sans-serif;
+}
+
+.vuln-td-cve  { font-weight: 500; color: #f87171; white-space: nowrap; }
+.vuln-td-text { font-weight: 400; color: var(--text-80); }
+.vuln-td-epss { font-weight: 400; color: var(--text-80); }
+.vuln-td-desc { font-weight: 400; color: var(--text-70); max-width: 220px; }
+.vuln-td-url  { font-weight: 400; color: var(--text-60); max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Export strip ── */
+.vuln-export-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.vuln-export-label {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-right: 8px;
+}
+
+.vuln-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 16px;
+  font-family: 'Aeonik', sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.vuln-export-btn-primary {
+  font-weight: 500;
+  color: #fff;
+  background: rgba(220, 38, 38, 0.18);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+}
+
+.vuln-export-btn-primary:hover {
+  background: rgba(220, 38, 38, 0.28);
+}
+
+.vuln-export-btn-secondary {
+  font-weight: 400;
+  color: var(--text-70);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vuln-export-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+}
+
+.vuln-count {
+  margin-left: auto;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-40);
+}
+
+/* ── GlassBadge ── */
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'Aeonik', sans-serif;
+  letter-spacing: 0.4px;
+}

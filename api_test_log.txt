@@ -1,0 +1,263 @@
+ * Serving Flask app 'api_server'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-509-752
+127.0.0.1 - - [04/Apr/2026 15:11:01] "GET /api/metrics HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "POST /api/auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:33] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:38] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:38] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:38] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:38] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:43] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:43] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:43] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:43] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:48] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:48] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:48] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:48] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:53] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:53] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:53] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:53] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:56] "GET /api/metrics HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:56] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [04/Apr/2026 15:12:58] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:58] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:58] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:12:58] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:03] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:03] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:03] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:03] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:08] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:08] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:08] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:08] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:13] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:13] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:13] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:13] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:18] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:18] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:18] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:18] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:23] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:23] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:23] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:23] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:28] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:28] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:28] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:28] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:33] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:33] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:33] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:33] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:38] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:38] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:38] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:38] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:43] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:43] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:43] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:43] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:48] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:48] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:48] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:48] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:53] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:53] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:53] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:53] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:54] "POST /api/scan/start HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:56] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:58] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:58] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:58] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:58] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:13:58] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:00] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:02] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:03] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:03] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:03] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:03] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:04] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:06] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:08] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:08] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:08] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:08] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:08] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:10] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:11] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:12] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:13] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:13] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:13] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:13] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:14] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:16] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:18] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:18] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:18] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:18] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:18] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:20] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:22] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:23] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:23] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:23] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:23] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:23] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:23] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:24] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:26] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:28] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:28] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:30] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:32] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:33] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:34] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:36] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:38] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:38] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:40] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:42] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:43] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:43] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:44] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:46] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:48] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+Header check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+127.0.0.1 - - [04/Apr/2026 15:14:48] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:50] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:52] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:53] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:54] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:56] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:58] "GET /api/vulnerabilities?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:14:58] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:00] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:02] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:04] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:06] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:08] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:10] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:12] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:14] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:16] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:16] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:18] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:20] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:22] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:24] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:26] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:28] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:30] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:32] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:34] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:36] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:38] "GET /api/scan/status HTTP/1.1" 200 -
+CORS check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+Cookie check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+CSRF check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+127.0.0.1 - - [04/Apr/2026 15:15:40] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:42] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:44] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:46] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:48] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:50] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:52] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:54] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:56] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:15:58] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:00] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:02] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:04] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:06] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:08] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:10] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:12] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:14] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:16] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:18] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:20] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:22] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:24] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:26] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:28] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:30] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:32] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:34] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:36] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:37] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:37] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:37] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:37] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:38] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:39] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:16:49] "GET /api/scan/status HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "POST /api/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:32] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+Host header injection check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+JS endpoint extraction error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+Header check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+127.0.0.1 - - [04/Apr/2026 15:17:37] "GET /api/scan-history HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:37] "GET /api/radar?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:37] "GET /api/epss?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:37] "GET /api/metrics?latest=true HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2026 15:17:41] "GET /api/scan/status HTTP/1.1" 200 -
+CORS check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+Cookie check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+CSRF check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+Host header injection check error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+JS endpoint extraction error: HTTPSConnectionPool(host='example.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+ * Detected change in 'c:\\Users\\sujal\\Downloads\\FinalYear Project - Copy\\FinalYear Project - Copy\\api_server.py', reloading
+DEBUG: Starting scan for https://example.com (Mode: custom, Modules: {'portScan': True, 'webVuln': False, 'manualChecks': True, 'deepChecks': False, 'secretKey': True, 'advFuzzing': False, 'agenticAi': True, 'owaspTop10': True})
+DEBUG: Phase 1 Reconnaissance started
+DEBUG: Extracted hostname for Nmap: example.com
+DEBUG: Nmap scan started. Mode: custom
+DEBUG: Running command: nmap -sV --top-ports 100 -T4 --min-rate 1000 -oX - example.com
+DEBUG: Timeout set to 300 seconds
+DEBUG: Nmap scan successful.
+DEBUG: Reconnaissance complete. Found 0 items.
+DEBUG: Phase 2 Web Scan started
+DEBUG: Web Scan complete. Found 0 items.
+DEBUG: Phase 3 Manual Detection started
+DEBUG: Manual Detection complete. Found 7 items.
+DEBUG: Phase 4 Risk Scoring started
+DEBUG: Risk Scoring complete. Total scored: 7
+DEBUG: Phase 5 Report Generation started
+DEBUG: Scan completed successfully
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-509-752

@@ -1,0 +1,431 @@
+/* ── Admin Database Page ──────────────────────────────────────────────────── */
+
+.admin-db-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 0 32px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.admin-db-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-radius: 16px;
+  gap: 16px;
+}
+.admin-db-header-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  justify-content: center;
+}
+.admin-db-header-icon { color: #ff3c5a; }
+.admin-db-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin: 0;
+  letter-spacing: -0.3px;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-subtitle {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  margin: 0;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-back,
+.admin-db-refresh {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-back:hover,
+.admin-db-refresh:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* ── Stats Strip ─────────────────────────────────────────────────────────── */
+.admin-db-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.admin-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 12px;
+  border-radius: 14px;
+  text-align: center;
+}
+.admin-stat-icon { opacity: 0.8; }
+.admin-stat-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-stat-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-family: 'Aeonik', sans-serif;
+}
+
+/* ── Body (sidebar + main) ───────────────────────────────────────────────── */
+.admin-db-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+.admin-db-sidebar {
+  border-radius: 16px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-self: flex-start;
+}
+.admin-db-sidebar-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  padding: 4px 10px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 6px;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-table-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.82rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Aeonik', sans-serif;
+  text-align: left;
+}
+.admin-db-table-btn:hover {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.8);
+}
+.admin-db-table-btn.active {
+  background: rgba(255, 60, 90, 0.1);
+  color: #ff3c5a;
+  font-weight: 500;
+}
+.admin-db-table-icon {
+  display: flex;
+  opacity: 0.5;
+}
+.admin-db-table-btn.active .admin-db-table-icon { opacity: 1; }
+.admin-db-table-name { flex: 1; }
+.admin-db-table-count {
+  font-size: 0.7rem;
+  background: rgba(255,255,255,0.06);
+  padding: 2px 8px;
+  border-radius: 20px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'JetBrains Mono', monospace;
+}
+.admin-db-table-btn.active .admin-db-table-count {
+  background: rgba(255, 60, 90, 0.15);
+  color: #ff3c5a;
+}
+
+/* ── Main Area ───────────────────────────────────────────────────────────── */
+.admin-db-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+/* Empty state */
+.admin-db-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 400px;
+  color: rgba(255,255,255,0.15);
+  font-size: 0.9rem;
+  font-family: 'Aeonik', sans-serif;
+}
+
+/* Toolbar */
+.admin-db-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: 14px;
+  gap: 16px;
+}
+.admin-db-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.admin-db-table-badge {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ff3c5a;
+  background: rgba(255, 60, 90, 0.1);
+  padding: 4px 14px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.admin-db-row-count {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.2s;
+}
+.admin-db-search-form:focus-within {
+  border-color: rgba(255, 60, 90, 0.3);
+}
+.admin-db-search-icon { color: rgba(255,255,255,0.25); flex-shrink: 0; }
+.admin-db-search-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.78rem;
+  width: 200px;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-search-input::placeholder { color: rgba(255,255,255,0.2); }
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.admin-db-table-wrap {
+  flex: 1;
+  overflow: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.06) transparent;
+}
+.admin-db-table-wrap::-webkit-scrollbar { width: 5px; height: 5px; }
+.admin-db-table-wrap::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
+
+.admin-db-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.admin-db-table th {
+  background: rgba(0,0,0,0.5);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+.admin-col-name {
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: block;
+}
+.admin-col-type {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.62rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+}
+.admin-db-table td {
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  max-width: 220px;
+  color: rgba(255,255,255,0.55);
+  transition: background 0.1s;
+}
+.admin-db-table tr:hover td {
+  background: rgba(255,255,255,0.03);
+}
+.admin-cell-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+}
+.admin-null {
+  color: rgba(255,255,255,0.15);
+  font-style: italic;
+}
+
+/* Actions column */
+.admin-col-actions {
+  width: 80px;
+  text-align: center;
+}
+.admin-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.admin-delete-btn:hover {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.3);
+  color: #f87171;
+}
+.admin-confirm-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+.admin-confirm-yes,
+.admin-confirm-no {
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-confirm-yes {
+  background: rgba(220, 38, 38, 0.2);
+  color: #f87171;
+}
+.admin-confirm-yes:hover { background: rgba(220, 38, 38, 0.35); }
+.admin-confirm-no {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.5);
+}
+
+/* Role badge */
+.admin-role-badge {
+  padding: 3px 12px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-role-badge.admin {
+  background: rgba(255, 60, 90, 0.15);
+  color: #ff3c5a;
+}
+.admin-role-badge.admin:hover {
+  background: rgba(255, 60, 90, 0.25);
+}
+.admin-role-badge.user {
+  background: rgba(96, 165, 250, 0.12);
+  color: #60a5fa;
+}
+.admin-role-badge.user:hover {
+  background: rgba(96, 165, 250, 0.22);
+}
+
+/* Loading / empty */
+.admin-db-loading,
+.admin-db-no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: rgba(255,255,255,0.2);
+  font-size: 0.85rem;
+  font-family: 'Aeonik', sans-serif;
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────────── */
+.admin-db-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+.admin-db-pagination button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Aeonik', sans-serif;
+}
+.admin-db-pagination button:hover:not(:disabled) {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+}
+.admin-db-pagination button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.admin-page-info {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  font-family: 'Aeonik', sans-serif;
+}

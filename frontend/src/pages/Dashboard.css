@@ -1,0 +1,162 @@
+/* ── Dashboard Page Styles ───────────────────────────────────────────────── */
+
+/* Page container */
+.db-page {
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Middle row (radar + EPSS) */
+.db-middle-row {
+  height: 320px;
+}
+
+/* Generic flex-column panel */
+.db-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.db-panel-relative {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow accent for panels matching CI */
+.db-panel::after,
+.db-panel-relative::after,
+.db-targets-panel::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Background blurred image inside panels */
+.db-panel-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+.db-panel-bg-top {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 20px);
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+/* Panel title group (Vulnerability Coverage) */
+.db-panel-title-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-size: 29px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+}
+
+.db-title-primary {
+  color: #fff;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+}
+
+.db-title-sub {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Radar chart container */
+.db-radar-container {
+  flex: 1;
+  margin-top: 40px;
+  transform: translateX(90px);
+}
+
+/* EPSS panel elements */
+.db-epss-title {
+  position: relative;
+  z-index: 1;
+  font-size: 31px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+}
+
+.db-epss-subtitle {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 400;
+  margin-top: 30px;
+  margin-left: 21px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.22) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.db-epss-chart {
+  flex: 1;
+  margin-top: 0;
+  padding: 0 20px 15px 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Issues by risk panel */
+.db-issues-title {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 16px;
+  z-index: 1;
+  font-size: 29px;
+}
+
+.db-risk-totals {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Target table panel */
+.db-targets-panel {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

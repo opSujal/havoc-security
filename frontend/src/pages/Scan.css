@@ -1,0 +1,107 @@
+.scan-panel {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 20px;
+}
+
+.scan-title {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--text-80);
+}
+
+.scan-input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.2);
+  color: white;
+  font-family: 'Aeonik', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.scan-input:focus {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.scan-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.radio-group {
+  display: flex;
+  gap: 24px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Aeonik', sans-serif;
+  font-size: 13px;
+  color: var(--text-60);
+  cursor: pointer;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--red);
+  color: white;
+  border: none;
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prog-wrap {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.prog-fill {
+  height: 100%;
+  background: rgba(74,222,128,0.8);
+  transition: width 0.3s ease;
+}
+
+.scan-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.scan-table-inner {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-top: 0;
+}
+
+.scan-empty-table {
+  color: var(--text-40);
+  font-size: 12px;
+  padding: 20px 0;
+}
