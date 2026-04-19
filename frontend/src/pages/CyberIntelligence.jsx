@@ -570,20 +570,24 @@ export default function CyberIntelligence() {
             <span className="ci-panel-sub" style={{ marginLeft: 'auto' }}>Severity × attack surface density</span>
           </div>
           <div className="ci-hmap-grid">
-            <div className="ci-hmap-header-row">
-              <div />
-              {HMAP_COLS_LABELS.map(col => (
-                <div key={col} className="ci-hmap-col-label">{col}</div>
-              ))}
-            </div>
-            {HMAP_ROWS.map((sev, ri) => (
-              <div key={sev} className="ci-hmap-data-row">
-                <div className="ci-hmap-row-label" style={{ color: SEV_COLOR[sev] }}>{sev}</div>
-                {heatmap[ri].map((val, ci) => (
-                  <HeatmapCell key={ci} value={val} maxVal={hmapMax} />
+            <div className="ci-hmap-scroll">
+              <div className="ci-hmap-inner">
+                <div className="ci-hmap-header-row">
+                  <div />
+                  {HMAP_COLS_LABELS.map(col => (
+                    <div key={col} className="ci-hmap-col-label">{col}</div>
+                  ))}
+                </div>
+                {HMAP_ROWS.map((sev, ri) => (
+                  <div key={sev} className="ci-hmap-data-row">
+                    <div className="ci-hmap-row-label" style={{ color: SEV_COLOR[sev] }}>{sev}</div>
+                    {heatmap[ri].map((val, ci) => (
+                      <HeatmapCell key={ci} value={val} maxVal={hmapMax} />
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
+            </div>
             <div className="ci-hmap-legend">
               <span className="ci-hmap-legend-label">Low</span>
               <div className="ci-hmap-legend-bar" />

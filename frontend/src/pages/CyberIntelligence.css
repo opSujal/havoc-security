@@ -277,12 +277,22 @@
 }
 
 /* ── Vulnerability Heatmap ── */
+
 .ci-hmap-grid {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 10px;
+}
+
+/* Scroll wrapper used on mobile — invisible on desktop */
+.ci-hmap-scroll {
+  width: 100%;
+}
+
+.ci-hmap-inner {
+  /* no constraints on desktop — flex parent sizes it */
 }
 
 .ci-hmap-header-row {
@@ -476,7 +486,6 @@
 
 /* ── Responsive Mobile/Tablet Breakpoints ── */
 @media (max-width: 1400px) {
-  /* Let heatmap overflow horizontally nicely if needed */
   .ci-hmap-header-row, .ci-hmap-data-row {
     grid-template-columns: 60px repeat(8, 1fr);
   }
@@ -495,11 +504,35 @@
 }
 
 @media (max-width: 900px) {
-  .ci-hmap-grid {
+  /* Heatmap scroll wrapper takes over */
+  .ci-hmap-scroll {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Clip within the panel's rounded corners */
+    border-radius: 16px;
   }
-  .ci-hmap-header-row, .ci-hmap-data-row {
-    min-width: 600px; /* force horizontal scroll on small screens for heatmap */
+
+  .ci-hmap-inner {
+    min-width: 560px; /* 8 cols need at least this much room */
+  }
+
+  /* Slightly smaller column labels on mobile */
+  .ci-hmap-col-label {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Tighter row-label width on mobile */
+  .ci-hmap-header-row,
+  .ci-hmap-data-row {
+    grid-template-columns: 56px repeat(8, 1fr);
+    gap: 5px;
+  }
+
+  /* Smaller cells */
+  .ci-hmap-cell {
+    min-height: 30px;
+    font-size: 9px;
   }
 }
 

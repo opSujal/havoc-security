@@ -159,6 +159,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 /* ── Dashboard Mobile Responsive ─────────────────────────────────────────── */
@@ -212,17 +213,55 @@
     height: 200px;
   }
 
-  /* Make target table scroll horizontally instead of squishing */
-  .db-targets-panel {
-    overflow-x: auto;
+  /* Bottom row panels get a sensible height cap on mobile */
+  .bottom-row .bottom-panel {
+    min-height: 200px;
   }
 
+  /* Target table panel: clip and allow horizontal scroll */
+  .db-targets-panel {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  /* The scroll wrapper inside must be the scrolling element */
+  .db-targets-panel .hide-scrollbar {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  /* Ensure table columns don't collapse below readable widths */
   .db-targets-panel .data-table {
-    min-width: 480px;
+    min-width: 420px;
+    table-layout: fixed;
+  }
+
+  /* Column width distribution */
+  .db-targets-panel .data-table th:nth-child(1),
+  .db-targets-panel .data-table td:nth-child(1) {
+    width: 170px;
+  }
+  .db-targets-panel .data-table th:nth-child(2),
+  .db-targets-panel .data-table td:nth-child(2) {
+    width: 110px;
+  }
+  .db-targets-panel .data-table th:nth-child(3),
+  .db-targets-panel .data-table td:nth-child(3) {
+    width: 70px;
+    text-align: center;
+  }
+  .db-targets-panel .data-table th:nth-child(4),
+  .db-targets-panel .data-table td:nth-child(4) {
+    width: 70px;
+    text-align: center;
   }
 
   .db-targets-panel .data-table th,
   .db-targets-panel .data-table td {
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
