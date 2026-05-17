@@ -12,6 +12,7 @@ import AuthPage from './pages/AuthPage';
 import TermsModal from './components/TermsModal';
 import CyberIntelligence from './pages/CyberIntelligence';
 import UserProfile from './pages/UserProfile';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { startScan, stopScan, getScanStatus } from './api/api';
 import { notify } from './utils/notifier';
 import PricingIndia from './pages/PricingIndia';
@@ -168,12 +169,12 @@ export default function App() {
 
   if (!user) {
     return (
-      <>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || '104868461141-placeholder.apps.googleusercontent.com'}>
         <Toaster position="top-right" toastOptions={{ style: { background: '#1a1f2e', color: '#e2eaf3', border: '1px solid rgba(255,255,255,0.1)', fontFamily: "'Aeonik', sans-serif" } }} />
         <Routes>
           <Route path="*" element={<AuthPage onLogin={handleLogin} />} />
         </Routes>
-      </>
+      </GoogleOAuthProvider>
     );
   }
 

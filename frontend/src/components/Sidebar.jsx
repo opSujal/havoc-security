@@ -2,7 +2,6 @@ import grid01     from '../assets/svgs/grid-01.svg';
 import layout02   from '../assets/svgs/layout-02 side abr 2nd.svg';
 import shieldPlus from '../assets/svgs/Shield Plus side bar 3rd.svg';
 import iconSvg    from '../assets/svgs/Icon.svg';
-import moon01     from '../assets/svgs/moon-01.svg';
 import logout01   from '../assets/svgs/logout-01.svg';
 import bgImage    from '../assets/bg.png';
 import shieldStar from '../assets/svgs/ShieldStar.svg';
@@ -17,7 +16,6 @@ export default function Sidebar({ onLogout }) {
     { id: 'vulnerabilities',   icon: layout02,   label: 'Vulnerabilities' },
     { id: 'remediation',       icon: shieldPlus, label: 'Remediation' },
     { id: 'settings',          icon: iconSvg,    label: 'Settings' },
-    { id: 'theme',             icon: moon01,     label: 'Theme' },
     { id: 'logout',            icon: logout01,   label: 'Logout' },
   ];
 

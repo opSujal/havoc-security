@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import Hls from 'hls.js';
 import { notify, clearLocalNotifications } from '../utils/notifier';
 import './AuthPage.css';
-import { loginUser, registerUser } from '../api/api';
+import { loginUser, registerUser, googleLoginUser } from '../api/api';
 import logoImg from '../assets/Havoc Sec LOGO red white.png';
+import { useGoogleLogin } from '@react-oauth/google';
 
 const MUX_VIDEO_URL = 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8';
 
@@ -41,6 +42,24 @@ export default function AuthPage({ onLogin }) {
     lastName: '',
     email: '',
     password: ''
+  });
+
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const res = await googleLoginUser(tokenResponse.access_token);
+        if (res.data.token) {
+          clearLocalNotifications();
+          notify.success('Welcome!', 'You have successfully logged in with Google.');
+          onLogin(res.data.user, res.data.token);
+        } else {
+          notify.error('Login failed', res.data.error || 'Google login failed');
+        }
+      } catch (err) {
+        notify.error('Login Failed', err.response?.data?.error || 'Failed to authenticate with Google');
+      }
+    },
+    onError: error => notify.error('Login Failed', 'Google login was not successful.')
   });
 
   // Orchestrate: exit anim (220ms) → swap mode → enter anim via key change
@@ -198,7 +217,7 @@ export default function AuthPage({ onLogin }) {
                 <span>or</span>
               </div>
 
-              <button className="oauth-btn google-btn">
+              <button type="button" className="oauth-btn google-btn" onClick={() => loginWithGoogle()}>
                 Sign in with Google
                 <svg style={{ width: 18, marginLeft: 8 }} viewBox="0 0 48 48" fill="none">
                   <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />

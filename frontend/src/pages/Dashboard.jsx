@@ -49,26 +49,40 @@ const EPSSTooltip = ({ active, payload }) => {
 
 /* Custom dot that renders the vulnerability label next to each red dot */
 const EPSSDot = (props) => {
-  const { cx, cy, payload } = props;
+  const { cx, cy } = props;
   if (cx == null || cy == null) return null;
-  const label = payload?.type || payload?.cve || '';
-  // Alternate label above/below to avoid overlaps
-  const above = payload?.time && parseInt(payload.time) % 2 === 0;
-  const labelY = above ? cy - 14 : cy + 20;
   return (
     <g>
       {/* Red dot */}
       <circle cx={cx} cy={cy} r={5} fill="#ff3333" stroke="#ff3333" strokeWidth={2} />
       {/* Glow ring */}
       <circle cx={cx} cy={cy} r={8} fill="none" stroke="rgba(255,51,51,0.35)" strokeWidth={2} />
+    </g>
+  );
+};
+
+/* Active dot that shows the label on hover */
+const EPSSActiveDot = (props) => {
+  const { cx, cy, payload } = props;
+  if (cx == null || cy == null) return null;
+  const label = payload?.type || payload?.cve || '';
+  const displayLabel = label.length > 16 ? label.slice(0, 15) + '…' : label;
+  
+  // Alternate label above/below to avoid overlaps
+  const above = payload?.time && parseInt(payload.time) % 2 === 0;
+  const labelY = above ? cy - 14 : cy + 20;
+  
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={9} fill="#ff3333" stroke="#111" strokeWidth={2} />
       {/* Vulnerability label */}
       {label && (
         <g>
           {/* Badge background */}
           <rect
-            x={cx - label.length * 3.2}
+            x={cx - displayLabel.length * 3.2}
             y={labelY - 11}
-            width={label.length * 6.4}
+            width={displayLabel.length * 6.4}
             height={14}
             rx={4}
             fill="rgba(20,0,0,0.82)"
@@ -85,7 +99,7 @@ const EPSSDot = (props) => {
             fontWeight={700}
             style={{ pointerEvents: 'none' }}
           >
-            {label.length > 16 ? label.slice(0, 15) + '…' : label}
+            {displayLabel}
           </text>
         </g>
       )}
@@ -268,7 +282,7 @@ export default function Dashboard({ _onStartScan, _scanning = false, scanVersion
                 <XAxis dataKey="time" tick={{ fill: 'var(--text-50)', fontSize: 10, fontFamily: 'Aeonik' }} axisLine={false} tickLine={false} />
                 <YAxis dataKey="epss" domain={[0, 1.0]} tickCount={6} tick={{ fill: 'var(--text-50)', fontSize: 10 }} axisLine={false} tickLine={false} />
                 <Tooltip content={<EPSSTooltip />} cursor={{ stroke: 'rgba(255, 255, 255, 0.1)' }} />
-                <Line type="monotone" dataKey="epss" stroke="#ffffff" strokeWidth={3} strokeDasharray="6 4" strokeOpacity={0.5} dot={<EPSSDot />} activeDot={{ r: 9, fill: '#ff3333', stroke: '#111', strokeWidth: 2 }} />
+                <Line type="monotone" dataKey="epss" stroke="#ffffff" strokeWidth={3} strokeDasharray="6 4" strokeOpacity={0.5} dot={<EPSSDot />} activeDot={<EPSSActiveDot />} />
               </LineChart>
             </ResponsiveContainer>
           </div>

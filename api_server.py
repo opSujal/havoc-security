@@ -468,6 +468,66 @@ def auth_login():
     token = _generate_token(user)
     return jsonify({"token": token, "user": user})
 
+@app.route('/api/auth/google', methods=['POST'])
+def auth_google():
+    body = request.get_json(force=True)
+    access_token = body.get('access_token')
+    if not access_token:
+        return jsonify({"error": "Missing access token"}), 400
+        
+    try:
+        import requests
+        r = requests.get(
+            'https://www.googleapis.com/oauth2/v3/userinfo',
+            headers={'Authorization': f'Bearer {access_token}'}
+        )
+        r.raise_for_status()
+        user_info = r.json()
+    except Exception as e:
+        return jsonify({"error": "Invalid Google token or network error"}), 401
+        
+    email = user_info.get('email')
+    given_name = user_info.get('given_name', '')
+    family_name = user_info.get('family_name', '')
+    
+    if not email:
+        return jsonify({"error": "Email not provided by Google"}), 400
+        
+    conn = sqlite3.connect('vapt_database.db', timeout=30)
+    conn.row_factory = sqlite3.Row
+    row = conn.execute("SELECT id, first_name, last_name, email, role, plan FROM users WHERE email = ?", (email,)).fetchone()
+    
+    if not row:
+        import bcrypt
+        dummy_hash = bcrypt.hashpw(os.urandom(16), bcrypt.gensalt()).decode('utf-8')
+        cur = conn.execute("INSERT INTO users (first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?)",
+                     (given_name, family_name, email, dummy_hash))
+        conn.commit()
+        user_id = cur.lastrowid
+        role = "User"
+        plan = "free"
+        first_name = given_name
+        last_name = family_name
+    else:
+        user_id = row['id']
+        role = row['role']
+        plan = row['plan']
+        first_name = row['first_name']
+        last_name = row['last_name']
+    conn.close()
+    
+    user_data = {
+        "id": user_id,
+        "firstName": first_name,
+        "lastName": last_name,
+        "email": email,
+        "role": role,
+        "plan": plan
+    }
+    
+    token = _generate_token(user_data)
+    return jsonify({"token": token, "user": user_data})
+
 @app.route('/api/auth/reset-password', methods=['POST', 'OPTIONS'])
 @auth_required
 def auth_reset_password():

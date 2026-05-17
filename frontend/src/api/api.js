@@ -59,6 +59,7 @@ export const removeAccount      = ()             => api.post('/api/settings/remo
 export const loginUser          = (email, password) => axios.post(`${BASE}/api/auth/login`, { email, password });
 export const registerUser       = (firstName, lastName, email, password) => axios.post(`${BASE}/api/auth/register`, { firstName, lastName, email, password });
 export const resetPassword      = (email, oldPassword, newPassword) => api.post('/api/auth/reset-password', { email, oldPassword, newPassword });
+export const googleLoginUser    = (accessToken) => axios.post(`${BASE}/api/auth/google`, { access_token: accessToken });
 
 export const exportJsonUrl  = `${BASE}/api/export/json`;
 export const exportCsvUrl   = `${BASE}/api/export/csv`;
