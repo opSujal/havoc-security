@@ -112,10 +112,16 @@ export default function App() {
     try {
       const r = await getScanStatus();
       const st = r.data.status;
-      if (st === 'completed' || st === 'error') {
+      if (st === 'completed') {
         idleGrace.current = 0;
         setScanning(false);
         setScanVersion(v => v + 1);
+        notify.success('Scan Complete', `Successfully scanned ${currentScanUrl}.`);
+      } else if (st === 'error') {
+        idleGrace.current = 0;
+        setScanning(false);
+        setScanVersion(v => v + 1);
+        notify.error('Scan Failed', r.data.error || 'The scan encountered an error.');
       } else if (st === 'idle') {
         idleGrace.current += 1;
         if (idleGrace.current >= 3) {
@@ -127,7 +133,7 @@ export default function App() {
         idleGrace.current = 0;
       }
     } catch { /* ignore */ }
-  }, []);
+  }, [currentScanUrl]);
 
   useEffect(() => {
     if (!scanning) return;

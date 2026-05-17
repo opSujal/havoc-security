@@ -498,9 +498,9 @@ def auth_google():
     row = conn.execute("SELECT id, first_name, last_name, email, role, plan FROM users WHERE email = ?", (email,)).fetchone()
     
     if not row:
-        import bcrypt
-        dummy_hash = bcrypt.hashpw(os.urandom(16), bcrypt.gensalt()).decode('utf-8')
-        cur = conn.execute("INSERT INTO users (first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?)",
+        # Avoid slow bcrypt hashing for Google accounts since they don't use passwords
+        dummy_hash = "!GOOGLE_AUTH!"
+        cur = conn.execute("INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
                      (given_name, family_name, email, dummy_hash))
         conn.commit()
         user_id = cur.lastrowid

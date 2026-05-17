@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { startScan, getScanStatus, getVulnerabilities, downloadJson, downloadCsv, downloadHtml, triggerDownload } from '../api/api';
 import './Scan.css';
 
@@ -18,6 +18,8 @@ export default function Scan() {
   const [vulns,     setVulns]     = useState([]);
   const [downloading, setDownloading] = useState(false);
 
+  const idleGrace = useRef(0);
+
   /* Poll scan status while scanning */
   const poll = useCallback(async () => {
     try { const r = await getScanStatus();
@@ -25,11 +27,22 @@ export default function Scan() {
       setProgress(d.progress || 0);
       if (d.phases?.length) setPhase(d.phases[d.phases.length - 1]);
       if (d.status === 'completed') {
+        idleGrace.current = 0;
         setScanning(false);
         setDone({ vulns: d.vulns_found, dur: d.duration });
       } else if (d.status === 'error') {
+        idleGrace.current = 0;
         setScanning(false);
         setPhase(`❌ Error: ${d.error}`);
+      } else if (d.status === 'idle') {
+        idleGrace.current += 1;
+        if (idleGrace.current >= 3) {
+          idleGrace.current = 0;
+          setScanning(false);
+          setPhase('❌ Scan stopped unexpectedly or failed to initialize.');
+        }
+      } else {
+        idleGrace.current = 0;
       }
     } catch { /* no-op */ }
   }, []);
