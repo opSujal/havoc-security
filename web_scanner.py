@@ -440,14 +440,24 @@ class ManualVulnerabilityDetector:
     def _get(self, url: str, timeout: int = 8, **kwargs) -> Optional[requests.Response]:
         try:
             self._rotate_ua()
-            return self.session.get(url, timeout=timeout, allow_redirects=True, **kwargs)
+            kwargs['stream'] = True
+            resp = self.session.get(url, timeout=timeout, allow_redirects=True, **kwargs)
+            chunk = resp.raw.read(250000)
+            resp.close()
+            resp._content = chunk
+            return resp
         except Exception:
             return None
 
     def _post(self, url: str, data=None, json=None, timeout: int = 8, **kwargs) -> Optional[requests.Response]:
         try:
             self._rotate_ua()
-            return self.session.post(url, data=data, json=json, timeout=timeout, **kwargs)
+            kwargs['stream'] = True
+            resp = self.session.post(url, data=data, json=json, timeout=timeout, **kwargs)
+            chunk = resp.raw.read(250000)
+            resp.close()
+            resp._content = chunk
+            return resp
         except Exception:
             return None
 
@@ -567,8 +577,10 @@ class ManualVulnerabilityDetector:
                            'https://evil.com.trusted.com', f'http://evil.{urlparse(target_url).netloc}']
         for origin in origins_to_test:
             try:
-                resp = self.session.get(target_url, timeout=6,
-                                        headers={'Origin': origin, 'User-Agent': random.choice(USER_AGENTS)})
+                resp = self._get(target_url, timeout=6,
+                                 headers={'Origin': origin, 'User-Agent': random.choice(USER_AGENTS)})
+                if not resp:
+                    continue
                 acao = resp.headers.get('Access-Control-Allow-Origin', '')
                 acac = resp.headers.get('Access-Control-Allow-Credentials', '')
                 if acao == '*' and acac.lower() == 'true':
@@ -599,8 +611,8 @@ class ManualVulnerabilityDetector:
         # Check if HTTPS redirects
         if target_url.startswith('http://'):
             try:
-                resp = self.session.get(target_url, timeout=5, allow_redirects=False)
-                if resp.status_code not in (301, 302, 307, 308):
+                resp = self._get(target_url, timeout=5, allow_redirects=False)
+                if resp and resp.status_code not in (301, 302, 307, 308):
                     vulns.append(self._vuln('CVE-2024-SSL-001', 'No HTTPS Redirect', 'High', 0.78,
                         "Site does not redirect HTTP to HTTPS. Sensitive data may be transmitted in plaintext.",
                         target_url))
@@ -666,9 +678,8 @@ class ManualVulnerabilityDetector:
     def _probe_path(self, base: str, path: str) -> Optional[Dict]:
         try:
             url = base + path
-            resp = self.session.get(url, timeout=4, allow_redirects=False,
-                                    headers={'User-Agent': random.choice(USER_AGENTS)})
-            if resp.status_code == 200:
+            resp = self._get(url, timeout=4, allow_redirects=False)
+            if resp and resp.status_code == 200:
                 body_lower = resp.text.lower()
                 # Avoid false positives from custom 404s
                 if any(fp in body_lower for fp in ['404 not found', 'page not found',
@@ -1391,16 +1402,20 @@ class SensitiveDataLeakageDetector:
         vulns = []
         seen = set()
         try:
-            resp = self.session.get(target_url, timeout=10,
+            resp = self.session.get(target_url, timeout=10, stream=True,
                                     headers={'User-Agent': random.choice(USER_AGENTS)})
+            resp._content = resp.raw.read(250000)
+            resp.close()
             # Also check common JS/resource files linked from the page
             js_urls = re.findall(r'src=["\']([^"\']+\.js[^"\']*)["\']', resp.text, re.IGNORECASE)
             pages_to_scan = [target_url] + [urljoin(target_url, j) for j in js_urls[:10]]
 
             for page_url in pages_to_scan:
                 try:
-                    r = self.session.get(page_url, timeout=8,
+                    r = self.session.get(page_url, timeout=8, stream=True,
                                          headers={'User-Agent': random.choice(USER_AGENTS)})
+                    r._content = r.raw.read(250000)
+                    r.close()
                     for name, pattern in RE_SENSITIVE_DATA.items():
                         matches = list(re.finditer(pattern, r.text, re.IGNORECASE))
                         for m in matches:
