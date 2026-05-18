@@ -655,7 +655,7 @@ class ManualVulnerabilityDetector:
         vulns = []
         base = target_url.rstrip('/')
         tested = 0
-        with ThreadPoolExecutor(max_workers=3) as ex:
+        with ThreadPoolExecutor(max_workers=1) as ex:
             futures = {ex.submit(self._probe_path, base, path): path for path in SENSITIVE_PATHS}
             for future in as_completed(futures):
                 result = future.result()
@@ -1310,7 +1310,7 @@ class ManualVulnerabilityDetector:
     # ─── COMBINED DETECTORS ───────────────────────────────────────────────────
     def detect_deep_vulnerabilities(self, target_url: str, danger_mode: bool = False) -> List[Dict]:
         vulns = []
-        with ThreadPoolExecutor(max_workers=4) as executor:
+        with ThreadPoolExecutor(max_workers=1) as executor:
             futures = [
                 executor.submit(self.detect_sqli_advanced,      target_url, danger_mode),
                 executor.submit(self.detect_nosqli,             target_url),
@@ -1337,7 +1337,7 @@ class ManualVulnerabilityDetector:
 
     def detect_owasp_top_10(self, target_url: str) -> List[Dict]:
         vulns = []
-        with ThreadPoolExecutor(max_workers=3) as executor:
+        with ThreadPoolExecutor(max_workers=1) as executor:
             futures = [
                 executor.submit(self._check_security_headers, target_url),
                 executor.submit(self._check_sensitive_paths,  target_url),
