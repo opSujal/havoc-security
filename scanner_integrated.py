@@ -267,7 +267,7 @@ class IntegratedVAPTScanner:
                 # Still run critical quick checks even in non-deep mode
                 logger.info("Quick critical checks (XSS, SQLi, CORS)...")
                 from concurrent.futures import ThreadPoolExecutor, as_completed
-                with ThreadPoolExecutor(max_workers=6) as ex:
+                with ThreadPoolExecutor(max_workers=2) as ex:
                     futures = [
                         ex.submit(self.manual_detector.detect_sqli_advanced, target, False),
                         ex.submit(self.manual_detector.detect_xss_advanced,  target, False),
